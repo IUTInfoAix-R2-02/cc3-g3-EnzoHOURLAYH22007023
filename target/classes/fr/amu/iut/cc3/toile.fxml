@@ -1,63 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Group?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<HBox id="scene" prefHeight="420.0" prefWidth="700.0" spacing="20.0" stylesheets="@style.css" style="-fx-background-color: LIGHTBLUE"
-      xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.amu.iut.cc3.ToileController">
-    <Pane fx:id="radar" prefHeight="400.0" prefWidth="400.0" >
-        <Circle centerX="200.0" centerY="200.0" radius="200.0" styleClass="toile"/>
-        <Circle centerX="200.0" centerY="200.0" radius="150.0" styleClass="toile"/>
-        <Circle centerX="200.0" centerY="200.0" radius="100.0" styleClass="toile"/>
-        <Circle centerX="200.0" centerY="200.0" radius="50.0" styleClass="toile"/>
+<HBox id="scene" prefHeight="420.0" prefWidth="700.0" spacing="20.0" style="-fx-background-color: LIGHTBLUE" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.amu.iut.cc3.ToileController">
+    <Pane fx:id="radar" prefHeight="400.0" prefWidth="400.0">
+        <Circle centerX="200.0" centerY="200.0" radius="200.0" styleClass="toile" />
+        <Circle centerX="200.0" centerY="200.0" radius="150.0" styleClass="toile" />
+        <Circle centerX="200.0" centerY="200.0" radius="100.0" styleClass="toile" />
+        <Circle centerX="200.0" centerY="200.0" radius="50.0" styleClass="toile" />
         <Group layoutX="195.0" layoutY="195.0">
-            <Line endX="10.0" endY="5.0" startY="5.0" styleClass="croix"/>
-            <Line endX="5.0" endY="10.0" startX="5.0" styleClass="croix"/>
+            <Line endX="10.0" endY="5.0" startY="5.0" styleClass="croix" />
+            <Line endX="5.0" endY="10.0" startX="5.0" styleClass="croix" />
         </Group>
-        <Line startX="200.0" startY="0" endX="200" endY="400.0" styleClass="toile"/>
-        <Line endX="200.0" endY="400.0" rotate="60.0" startX="200.0" styleClass="toile"/>
-        <Line endX="200.0" endY="400.0" rotate="120.0" startX="200.0" styleClass="toile"/>
-        <Text x="170" y="0" text="Compétence 1" />
-        <Text x="300" y="100" text="Compétence 2" />
-        <Text x="300" y="300" text="Compétence 3" />
-        <Text x="170" y="410" text="Compétence 4" />
-        <Text x="26" y="300" text="Compétence 5" />
-        <Text x="26" y="99" text="Compétence 6" />
-        <Pane fx:id="toile" styleClass="toile"/>
+        <Line endX="200" endY="400.0" startX="200.0" startY="0" styleClass="toile" />
+        <Line endX="200.0" endY="400.0" rotate="60.0" startX="200.0" styleClass="toile" />
+        <Line endX="200.0" endY="400.0" rotate="120.0" startX="200.0" styleClass="toile" />
+        <Text text="Compétence 1" x="170" y="0" />
+        <Text text="Compétence 2" x="300" y="100" />
+        <Text text="Compétence 3" x="300" y="300" />
+        <Text text="Compétence 4" x="170" y="410" />
+        <Text text="Compétence 5" x="26" y="300" />
+        <Text text="Compétence 6" x="26" y="99" />
+        <Pane fx:id="toile" styleClass="toile" />
     </Pane>
     <VBox alignment="CENTER" spacing="10">
-        <GridPane vgap="10" hgap="10" fx:id="gridPane">
-            <Text text="Compétence 1 - Réaliser" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-            <Text text="Compétence 2 - Optimiser" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-            <Text text="Compétence 3 - Administer" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-            <Text text="Compétence 4 - Gérer" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-            <Text text="Compétence 5 - Conduire" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-            <Text text="Compétence 6 - Collaborer" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-            <TextField fx:id="1" onAction="#dessinerPoint" GridPane.columnIndex="1" GridPane.rowIndex="0" maxWidth="40"/>
-            <TextField fx:id="2" onAction="#dessinerPoint" GridPane.columnIndex="1" GridPane.rowIndex="1" maxWidth="40"/>
-            <TextField fx:id="3" onAction="#dessinerPoint" GridPane.columnIndex="1" GridPane.rowIndex="2" maxWidth="40"/>
-            <TextField fx:id="4" onAction="#dessinerPoint" GridPane.columnIndex="1" GridPane.rowIndex="3" maxWidth="40"/>
-            <TextField fx:id="5" onAction="#dessinerPoint" GridPane.columnIndex="1" GridPane.rowIndex="4" maxWidth="40"/>
-            <TextField fx:id="6" onAction="#dessinerPoint" GridPane.columnIndex="1" GridPane.rowIndex="5" maxWidth="40"/>
+        <GridPane fx:id="gridPane" alignment="BOTTOM_CENTER" hgap="10" vgap="10" VBox.vgrow="ALWAYS">
+            <Text text="Compétence 1 - Réaliser" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Text text="Compétence 2 - Optimiser" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Text text="Compétence 3 - Administer" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <Text text="Compétence 4 - Gérer" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <Text text="Compétence 5 - Conduire" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <Text text="Compétence 6 - Collaborer" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+            <TextField fx:id="1" maxWidth="40" onAction="#dessinerPoint" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <TextField fx:id="2" maxWidth="40" onAction="#dessinerPoint" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="3" maxWidth="40" onAction="#dessinerPoint" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="4" maxWidth="40" onAction="#dessinerPoint" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="5" maxWidth="40" onAction="#dessinerPoint" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="6" maxWidth="40" onAction="#dessinerPoint" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
         </GridPane>
-        <VBox>
+        <VBox alignment="CENTER" VBox.vgrow="ALWAYS">
             <VBox>
-                <Label fx:id="Error1" text="Erreur de saisie :" textFill="red" opacity="0" />
-                <Label fx:id="Error2" text="Les valeurs doivent être entre 0 et 20" textFill="red" opacity="0"/>
+                <Label fx:id="Error1" opacity="0" text="Erreur de saisie :" textFill="red" />
+                <Label fx:id="Error2" opacity="0" text="Les valeurs doivent être entre 0 et 20" textFill="red" />
             </VBox>
             <HBox alignment="BOTTOM_RIGHT" spacing="10">
-                <Button text="Tracer" onAction="#tracerToile"/>
-                <Button text="Vider" onAction="#viderToile"/>
+                <Button onAction="#tracerToile" text="Tracer" />
+                <Button onAction="#viderToile" text="Vider" />
             </HBox>
         </VBox>
     </VBox>
