@@ -14,6 +14,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
@@ -38,8 +39,11 @@ public class ToileController implements Initializable {
     @FXML
     private GridPane gridPane;
     @FXML
-    private TextField comp1;
-
+    private Label Error1;
+    @FXML
+    private Label Error2;
+    @FXML
+    private Button viderBtn;
     @FXML
     private Pane toile;
 
@@ -60,26 +64,39 @@ public class ToileController implements Initializable {
 
     @FXML
     private void dessinerPoint(){
-        /*Circle nouveauPoint =
-                new Circle(getXRadarChart(Double.parseDouble(comp1.getText()),1),
-                        getYRadarChart(Double.parseDouble(comp1.getText()),1),5);
-        toile.getChildren().add(nouveauPoint);*/
+        for (Node node : toile.getChildren()) {
+            if (node instanceof Circle) {
+                node.setOpacity(0);
+            }
+        }
 
         for (Node node : gridPane.getChildren()) {
-            if (node instanceof TextField) {
+            if (node instanceof TextField ) {
                 TextField textField = (TextField) node;
-                Double value = Double.parseDouble(textField.getText());
-                if(value >= 0 || value <= 20) {
-                    try {
-                        Circle nouveauPoint =
-                                new Circle(getXRadarChart(value, Integer.parseInt(textField.getId())),
-                                        getYRadarChart(value, Integer.parseInt(textField.getId())), 5);
+                if(!textField.getText().isEmpty() ) {
+                    Double value = Double.parseDouble(textField.getText());
+                    if (value >= 0 && value <= 20) {
+                        Circle nouveauPoint = new Circle(
+                                getXRadarChart(value, Integer.parseInt(textField.getId())),
+                                getYRadarChart(value, Integer.parseInt(textField.getId())),
+                                5);
                         toile.getChildren().add(nouveauPoint);
-                    } catch (NumberFormatException e) {
-                        // La valeur saisie n'est pas un entier valide
+                    } else {
+                        Error1.setOpacity(100);
+                        Error2.setOpacity(100);
                     }
                 }
             }
         }
+    }
+
+    private void viderToile(){
+        for (Node node : toile.getChildren()) {
+            if (node instanceof Circle) {
+                node.setOpacity(0);
+            }
+        }
+        Error1.setOpacity(0);
+        Error2.setOpacity(0);
     }
 }
