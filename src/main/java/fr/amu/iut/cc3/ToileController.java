@@ -33,7 +33,6 @@ public class ToileController implements Initializable {
     @FXML
     private Pane toile;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
@@ -50,27 +49,20 @@ public class ToileController implements Initializable {
 
     @FXML
     private void dessinerPoint(){
-        /*ArrayList<Node> toilePoint = new ArrayList<>();
-        for (Node node : toile.getChildren()) {
-            if (node instanceof Circle) {
-                toilePoint.add(node);
-            }
-        }
-        toile.getChildren().removeAll(toilePoint);*/
-        viderToile();
+        viderToile(); // on vide la toile pour mettre a jour dynamiqement les points
 
         for (Node node : gridPane.getChildren()) {
             if (node instanceof TextField ) {
                 TextField textField = (TextField) node;
                 if(!textField.getText().isEmpty() ) {
-                    Double value = Double.parseDouble(textField.getText());
-                    if (value >= 0 && value <= 20) {
+                    Double value = Double.parseDouble(textField.getText()); // récupération des valeurs
+                    if (value >= 0 && value <= 20) { // test de la validité des valeurs si ok ajout du point
                         Circle nouveauPoint = new Circle(
                                 getXRadarChart(value, Integer.parseInt(textField.getId())),
                                 getYRadarChart(value, Integer.parseInt(textField.getId())),
                                 5);
                         toile.getChildren().add(nouveauPoint);
-                    } else {
+                    } else { // si invalide on affiche le msg d'erreur
                         Error1.setOpacity(1);
                         Error2.setOpacity(1);
                     }
@@ -78,35 +70,36 @@ public class ToileController implements Initializable {
             }
         }
 
-        if(this.tracer)
+        if(this.tracer) // on retrace les lignes si bouton tracer a déjà été cliquer
             tracerToile();
     }
 
     @FXML
-    private void viderToile(){
+    private void viderToile(){ // est appeler quand btn vider est clicker
         ArrayList<Node> toileContenue = new ArrayList<>();
-        for (Node node : toile.getChildren()) {
+        for (Node node : toile.getChildren()) { // récupération des points et lignes
             toileContenue.add(node);
         }
-        toile.getChildren().removeAll(toileContenue);
-        Error1.setOpacity(0);
+        toile.getChildren().removeAll(toileContenue); // suppréssion des points et lignes
+        Error1.setOpacity(0); // on cache le msg d'erreur
         Error2.setOpacity(0);
     }
 
     @FXML
-    private void tracerToile(){
-
+    private void tracerToile(){ // appeler lors du click du btn tracer
         try {
             ArrayList<Circle> toilePoint = new ArrayList<>();
-            for (Node node : toile.getChildren()) {
+            for (Node node : toile.getChildren()) { // on récup les points
                 if (node instanceof Circle) {
                     toilePoint.add((Circle) node);
                 }
             }
+            // cas particulier des points de début et fin de liste gérer a part
             Line line = new Line(toilePoint.get(0).getCenterX(), toilePoint.get(0).getCenterY(),
                     toilePoint.get(toilePoint.size() - 1).getCenterX(), toilePoint.get(toilePoint.size() - 1).getCenterY());
             line.setFill(BLACK);
             toile.getChildren().add(line);
+            // création et ajout des lignes
             for (int i = 0; i < toilePoint.size() - 1; ++i) {
                 Line nouvelLine = new Line(toilePoint.get(i).getCenterX(), toilePoint.get(i).getCenterY(),
                         toilePoint.get(i + 1).getCenterX(), toilePoint.get(i + 1).getCenterY());

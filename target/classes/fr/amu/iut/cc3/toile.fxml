@@ -13,7 +13,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<HBox id="scene" prefHeight="420.0" prefWidth="700.0" spacing="20.0" stylesheets="@style.css"
+<HBox id="scene" prefHeight="420.0" prefWidth="700.0" spacing="20.0" stylesheets="@style.css" style="-fx-background-color: LIGHTBLUE"
       xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.amu.iut.cc3.ToileController">
     <Pane fx:id="radar" prefHeight="400.0" prefWidth="400.0" >
         <Circle centerX="200.0" centerY="200.0" radius="200.0" styleClass="toile"/>
