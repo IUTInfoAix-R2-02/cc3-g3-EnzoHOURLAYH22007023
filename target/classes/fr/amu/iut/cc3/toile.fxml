@@ -20,7 +20,7 @@
         <Line endX="200" endY="400.0" startX="200.0" startY="0" styleClass="toile" />
         <Line endX="200.0" endY="400.0" rotate="60.0" startX="200.0" styleClass="toile" />
         <Line endX="200.0" endY="400.0" rotate="120.0" startX="200.0" styleClass="toile" />
-        <Text text="Compétence 1" x="170" y="0" />
+        <Text text="Compétence 1" x="170" y="10.0" />
         <Text text="Compétence 2" x="300" y="100" />
         <Text text="Compétence 3" x="300" y="300" />
         <Text text="Compétence 4" x="170" y="410" />
