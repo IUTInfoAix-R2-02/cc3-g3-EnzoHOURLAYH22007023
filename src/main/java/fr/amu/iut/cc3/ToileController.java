@@ -1,34 +1,19 @@
 package fr.amu.iut.cc3;
 
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleListProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Point2D;
 import javafx.scene.Node;
-import javafx.scene.chart.XYChart;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
-
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
+
+import static javafx.scene.paint.Color.BLACK;
 
 public class ToileController implements Initializable {
 
@@ -110,20 +95,27 @@ public class ToileController implements Initializable {
 
     @FXML
     private void tracerToile(){
-        this.tracer = true;
-        ArrayList<Circle> toilePoint = new ArrayList<>();
-        for (Node node : toile.getChildren()) {
-            if (node instanceof Circle) {
-                toilePoint.add((Circle)node);
+
+        try {
+            ArrayList<Circle> toilePoint = new ArrayList<>();
+            for (Node node : toile.getChildren()) {
+                if (node instanceof Circle) {
+                    toilePoint.add((Circle) node);
+                }
             }
-        }
-        Line line = new Line(toilePoint.get(0).getCenterX(),toilePoint.get(0).getCenterY(),
-                toilePoint.get(toilePoint.size()-1).getCenterX(),toilePoint.get(toilePoint.size()-1).getCenterY());
-        toile.getChildren().add(line);
-        for (int i = 0 ; i < toilePoint.size()-1 ; ++i) {
-            Line nouvelLine = new Line(toilePoint.get(i).getCenterX(),toilePoint.get(i).getCenterY(),
-                    toilePoint.get(i+1).getCenterX(),toilePoint.get(i+1).getCenterY());
-            toile.getChildren().add(nouvelLine);
+            Line line = new Line(toilePoint.get(0).getCenterX(), toilePoint.get(0).getCenterY(),
+                    toilePoint.get(toilePoint.size() - 1).getCenterX(), toilePoint.get(toilePoint.size() - 1).getCenterY());
+            line.setFill(BLACK);
+            toile.getChildren().add(line);
+            for (int i = 0; i < toilePoint.size() - 1; ++i) {
+                Line nouvelLine = new Line(toilePoint.get(i).getCenterX(), toilePoint.get(i).getCenterY(),
+                        toilePoint.get(i + 1).getCenterX(), toilePoint.get(i + 1).getCenterY());
+                nouvelLine.setFill(BLACK);
+                toile.getChildren().add(nouvelLine);
+            }
+            this.tracer = true;
+        } catch (IllegalAccessError e){
+            //Pas de point ou pas assez de ppoint
         }
     }
 
