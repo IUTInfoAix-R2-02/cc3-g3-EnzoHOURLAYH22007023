@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -17,6 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 
 import java.net.URL;
@@ -30,6 +32,12 @@ public class ToileController implements Initializable {
     private static int angleEnDegre = 60;
     private static int angleDepart = 90;
     private static int noteMaximale = 20;
+
+    @FXML
+    private TextField comp1;
+
+    @FXML
+    private Pane radar;
 
 
     @Override
@@ -46,4 +54,11 @@ public class ToileController implements Initializable {
                 *  (value / noteMaximale));
     }
 
+    @FXML
+    private void dessinerPoint(){
+        Circle nouveauPoint =
+                new Circle(getXRadarChart(Double.parseDouble(.getText()),1),
+                        getYRadarChart(Double.parseDouble(text.getText()),1),5);
+        radar.getChildren().add(nouveauPoint);
+    }
 }
