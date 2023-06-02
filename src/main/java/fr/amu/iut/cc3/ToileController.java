@@ -90,6 +90,7 @@ public class ToileController implements Initializable {
         }
     }
 
+    @FXML
     private void viderToile(){
         for (Node node : toile.getChildren()) {
             if (node instanceof Circle) {
