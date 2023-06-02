@@ -97,13 +97,13 @@ public class ToileController implements Initializable {
             // cas particulier des points de début et fin de liste gérer a part
             Line line = new Line(toilePoint.get(0).getCenterX(), toilePoint.get(0).getCenterY(),
                     toilePoint.get(toilePoint.size() - 1).getCenterX(), toilePoint.get(toilePoint.size() - 1).getCenterY());
-            line.setFill(BLACK);
+            line.setStyle("-fx-fill: BLACK");
             toile.getChildren().add(line);
             // création et ajout des lignes
             for (int i = 0; i < toilePoint.size() - 1; ++i) {
                 Line nouvelLine = new Line(toilePoint.get(i).getCenterX(), toilePoint.get(i).getCenterY(),
                         toilePoint.get(i + 1).getCenterX(), toilePoint.get(i + 1).getCenterY());
-                nouvelLine.setFill(BLACK);
+                nouvelLine.setStyle("-fx-fill: BLACK");
                 toile.getChildren().add(nouvelLine);
             }
             this.tracer = true;

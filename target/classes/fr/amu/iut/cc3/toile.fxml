@@ -42,18 +42,6 @@
             <TextField fx:id="4" maxWidth="40" onAction="#dessinerPoint" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="5" maxWidth="40" onAction="#dessinerPoint" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextField fx:id="6" maxWidth="40" onAction="#dessinerPoint" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-         <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-         </rowConstraints>
         </GridPane>
         <VBox alignment="CENTER" VBox.vgrow="ALWAYS">
             <VBox>
