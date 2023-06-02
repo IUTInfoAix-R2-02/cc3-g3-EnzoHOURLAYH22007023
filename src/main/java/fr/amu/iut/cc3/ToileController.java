@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -43,8 +44,6 @@ public class ToileController implements Initializable {
     @FXML
     private Label Error2;
     @FXML
-    private Button viderBtn;
-    @FXML
     private Pane toile;
 
 
@@ -64,11 +63,13 @@ public class ToileController implements Initializable {
 
     @FXML
     private void dessinerPoint(){
+        ArrayList<Node> toilePoint = new ArrayList<>();
         for (Node node : toile.getChildren()) {
             if (node instanceof Circle) {
-                node.setOpacity(0);
+                toilePoint.add(node);
             }
         }
+        toile.getChildren().removeAll(toilePoint);
 
         for (Node node : gridPane.getChildren()) {
             if (node instanceof TextField ) {
@@ -82,8 +83,8 @@ public class ToileController implements Initializable {
                                 5);
                         toile.getChildren().add(nouveauPoint);
                     } else {
-                        Error1.setOpacity(100);
-                        Error2.setOpacity(100);
+                        Error1.setOpacity(1);
+                        Error2.setOpacity(1);
                     }
                 }
             }
@@ -92,12 +93,19 @@ public class ToileController implements Initializable {
 
     @FXML
     private void viderToile(){
+        ArrayList<Node> toilePoint = new ArrayList<>();
         for (Node node : toile.getChildren()) {
             if (node instanceof Circle) {
-                node.setOpacity(0);
+                toilePoint.add(node);
             }
         }
+        toile.getChildren().removeAll(toilePoint);
         Error1.setOpacity(0);
         Error2.setOpacity(0);
+    }
+
+    @FXML
+    private void tracerToile(){
+
     }
 }
