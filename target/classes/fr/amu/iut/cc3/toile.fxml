@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <HBox id="scene" prefHeight="420.0" prefWidth="650.0" spacing="20.0" stylesheets="@style.css"
       xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.amu.iut.cc3.ToileController">
     <Pane fx:id="radar" prefHeight="400.0" prefWidth="400.0" >
@@ -50,8 +51,14 @@
             <TextField fx:id="6" onAction="#dessinerPoint" GridPane.columnIndex="1" GridPane.rowIndex="5" maxWidth="40"/>
         </GridPane>
         <HBox alignment="BOTTOM_RIGHT">
-            <Button text="Tracer"/>
-            <Button text="Vider"/>
+            <VBox>
+                <Label text="Erreur de saisie :" textFill="red"/>
+                <Label text="Les valeurs doivent être entre 0 et 20" textFill="red"/>
+            </VBox>
+            <HBox>
+                <Button text="Tracer"/>
+                <Button text="Vider"/>
+            </HBox>
         </HBox>
     </VBox>
 </HBox>

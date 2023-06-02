@@ -68,17 +68,16 @@ public class ToileController implements Initializable {
         for (Node node : gridPane.getChildren()) {
             if (node instanceof TextField) {
                 TextField textField = (TextField) node;
-                String cat = textField.getId();
-                int pop = Integer.parseInt(textField.getText());
-                try {
-                    Circle nouveauPoint =
-                            new Circle(getXRadarChart(Double.parseDouble(textField.getText()),
-                                            Integer.parseInt(textField.getId())),
-                                       getYRadarChart(Double.parseDouble(textField.getText()),
-                                            Integer.parseInt(textField.getId())),5);
-                    toile.getChildren().add(nouveauPoint);
-                } catch (NumberFormatException e) {
-                    // La valeur saisie n'est pas un entier valide
+                Double value = Double.parseDouble(textField.getText());
+                if(value >= 0 || value <= 20) {
+                    try {
+                        Circle nouveauPoint =
+                                new Circle(getXRadarChart(value, Integer.parseInt(textField.getId())),
+                                        getYRadarChart(value, Integer.parseInt(textField.getId())), 5);
+                        toile.getChildren().add(nouveauPoint);
+                    } catch (NumberFormatException e) {
+                        // La valeur saisie n'est pas un entier valide
+                    }
                 }
             }
         }
