@@ -56,8 +56,8 @@
                 <Label fx:id="Error2" text="Les valeurs doivent être entre 0 et 20" textFill="red" opacity="0"/>
             </VBox>
             <HBox alignment="BOTTOM_RIGHT" spacing="10">
-                <Button text="Tracer"/>
-                <Button fx:id="viderBtn" text="Vider" onAction="#viderToile"/>
+                <Button text="Tracer" onAction="#tracerToile"/>
+                <Button text="Vider" onAction="#viderToile"/>
             </HBox>
         </VBox>
     </VBox>

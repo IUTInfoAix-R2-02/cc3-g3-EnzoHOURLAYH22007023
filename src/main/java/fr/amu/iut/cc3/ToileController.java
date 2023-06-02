@@ -37,6 +37,8 @@ public class ToileController implements Initializable {
     private static int angleDepart = 90;
     private static int noteMaximale = 20;
 
+    private boolean tracer = false;
+
     @FXML
     private GridPane gridPane;
     @FXML
@@ -63,13 +65,14 @@ public class ToileController implements Initializable {
 
     @FXML
     private void dessinerPoint(){
-        ArrayList<Node> toilePoint = new ArrayList<>();
+        /*ArrayList<Node> toilePoint = new ArrayList<>();
         for (Node node : toile.getChildren()) {
             if (node instanceof Circle) {
                 toilePoint.add(node);
             }
         }
-        toile.getChildren().removeAll(toilePoint);
+        toile.getChildren().removeAll(toilePoint);*/
+        viderToile();
 
         for (Node node : gridPane.getChildren()) {
             if (node instanceof TextField ) {
@@ -89,23 +92,39 @@ public class ToileController implements Initializable {
                 }
             }
         }
+
+        if(this.tracer)
+            tracerToile();
     }
 
     @FXML
     private void viderToile(){
-        ArrayList<Node> toilePoint = new ArrayList<>();
+        ArrayList<Node> toileContenue = new ArrayList<>();
         for (Node node : toile.getChildren()) {
-            if (node instanceof Circle) {
-                toilePoint.add(node);
-            }
+            toileContenue.add(node);
         }
-        toile.getChildren().removeAll(toilePoint);
+        toile.getChildren().removeAll(toileContenue);
         Error1.setOpacity(0);
         Error2.setOpacity(0);
     }
 
     @FXML
     private void tracerToile(){
-
+        this.tracer = true;
+        ArrayList<Circle> toilePoint = new ArrayList<>();
+        for (Node node : toile.getChildren()) {
+            if (node instanceof Circle) {
+                toilePoint.add((Circle)node);
+            }
+        }
+        Line line = new Line(toilePoint.get(0).getCenterX(),toilePoint.get(0).getCenterY(),
+                toilePoint.get(toilePoint.size()-1).getCenterX(),toilePoint.get(toilePoint.size()-1).getCenterY());
+        toile.getChildren().add(line);
+        for (int i = 0 ; i < toilePoint.size()-1 ; ++i) {
+            Line nouvelLine = new Line(toilePoint.get(i).getCenterX(),toilePoint.get(i).getCenterY(),
+                    toilePoint.get(i+1).getCenterX(),toilePoint.get(i+1).getCenterY());
+            toile.getChildren().add(nouvelLine);
+        }
     }
+
 }
